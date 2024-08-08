@@ -46,13 +46,13 @@
                                         @endcan
 
                                         @can('delete permission')
-                                        <a href="{{ url('permissions/'.$permission->id.'/delete') }}" class="btn btn-danger mx-2">Delete</a>
+                                        <a href="{{ url('permissions/'.$permission->id.'/delete') }}" class="btn btn-danger mx-2" style="color:red;">Delete</a>
                                         @endcan
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
-                        </table>
+                    </table>
 
                     </div>
                 </div>

@@ -42,21 +42,21 @@
                         <ul class="{{ request()->is('iqtisodiylar*') ? 'menu__sub-open':'' }}{{ request()->is('tashkilotrahbarilar') ? 'menu__sub-open':'' }}{{ request()->is('tashkilot*') ? 'menu__sub-open':'' }}">
                             
                             <li>
-                                <a href="{{ route('tashkilotlar.index') }}" class="menu menu{{ request()->is('tashkilot*') ? '--active':'' }}">
+                                <a href="" class="menu menu{{ request()->is('tashkilot*') ? '--active':'' }}">
                                     <div class="menu__icon"> <i data-feather="activity"></i> </div>
                                     <div class="menu__title"> Tashkilot pasportilari </div>
                                 </a>
                             </li>
                             
                             <li>
-                                <a href="{{ route("tashkilotrahbarilar.index") }}" class="menu menu{{ request()->is('tashkilotrahbarilar*') ? '--active':'' }}">
+                                <a href="" class="menu menu{{ request()->is('tashkilotrahbarilar*') ? '--active':'' }}">
                                     <div class="menu__icon"> <i data-feather="activity"></i> </div>
                                     <div class="menu__title">  Tashkilotlar raxbarlari  </div>
                                 </a>
                             </li>
                             
                             <li>
-                                <a href="{{ route('iqtisodiylar.index') }}" class="menu menu{{ request()->is('iqtisodiylar*') ? '--active':'' }}">
+                                <a href="" class="menu menu{{ request()->is('iqtisodiylar*') ? '--active':'' }}">
                                     <div class="menu__icon"> <i data-feather="activity"></i> </div>
                                     <div class="menu__title">  Iqtisodiy moliyaviy faoliyatlari   </div>
                                 </a>
@@ -68,7 +68,7 @@
 
                 @role('super-admin')
                     <li>
-                        <a href="{{ route("xodim.barchaXodimlar") }}" class="menu menu{{ request()->is('xodim*') ? '--active':'' }}">
+                        <a href="" class="menu menu{{ request()->is('xodim*') ? '--active':'' }}">
                             <div class="menu__icon"> <i data-feather="inbox"></i> </div>
                             <div class="menu__title"> Xodimlar </div>
                         </a>
@@ -116,16 +116,7 @@
                     </li>
                 @endrole
 
-            <!-- start admin userlar -->
-                @role(['admin','Ilmiy_faoliyat_uchun_masul'])
-                    <li>
-                        <a href="{{ route("ilmiydaraja.index") }}" class="menu menu{{ request()->is('ilmiydaraja*') ? '--active':'' }}">
-                            <div class="menu__icon"> <i data-feather="file-text"></i> </div>
-                            <div class="menu__title"> Ilmiy loyiha bilan ta'minlangami </div>
-                        </a>
-                    </li>
-                @endrole
-                <!-- end admin -->
+            
                 
                 <div class="nav__devider my-6"></div>
                     <li>

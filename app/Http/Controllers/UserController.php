@@ -30,10 +30,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name','name')->all();
-        $tashkilot_id = auth()->user()->tashkilot_id;
-        $xodimlar = Xodimlar::where('tashkilot_id', $tashkilot_id)->get();
-        $tashkilots = Tashkilot::orderBy('name', 'asc')->get();
-        return view('role-permission.user.create', ['roles' => $roles, 'tashkilots' => $tashkilots,'xodimlar'=>$xodimlar]);
+        return view('role-permission.user.create', ['roles' => $roles]);
     }
 
     public function store(Request $request)
@@ -43,36 +40,28 @@ class UserController extends Controller
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|max:20',
             'roles' => 'required',
-            'tashkilot_id' => 'required'
         ]);
 
-        $roluchun = $request->roles;
         $user = User::create([
                         'name' => $request->name,
                         'email' => $request->email,
-                        'tashkilot_id' => $request->tashkilot_id,
                         'password' => Hash::make($request->password),
                     ]);
 
         $user->syncRoles($request->roles);
-        if($roluchun[0] == "admin"){
-            return redirect('/users')->with('status','User Updated Successfully with roles');
-        }else{
-            return redirect('/')->with('status','User Updated Successfully with roles');
-        }
+
+        return redirect('/users')->with('status','User Updated Successfully with roles');
+        
     }
 
     public function edit(User $user)
     {
         $roles = Role::pluck('name','name')->all();
         $userRoles = $user->roles->pluck('name','name')->all();
-        $tashkilot_id = auth()->user()->tashkilot_id;
-        $xodimlar = Xodimlar::where('tashkilot_id', $tashkilot_id)->get();
         return view('role-permission.user.edit', [
             'user' => $user,
             'roles' => $roles,
-            'userRoles' => $userRoles,
-            'xodimlar' => $xodimlar
+            'userRoles' => $userRoles
         ]);
     }
 
@@ -97,12 +86,9 @@ class UserController extends Controller
 
         $user->update($data);
         $user->syncRoles($request->roles);
-        $roluchun = $request->roles;
-        if($roluchun[0] == 'admin'){
-            return redirect('/users')->with('status','User Updated Successfully with roles');
-        }else{
-            return redirect('/')->with('status','User Updated Successfully with roles');
-        }
+
+        return redirect('/users')->with('status','User Updated Successfully with roles');
+        
     }
 
     public function destroy($userId)

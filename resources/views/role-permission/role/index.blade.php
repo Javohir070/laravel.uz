@@ -52,7 +52,7 @@
                                         @endcan
 
                                         @can('delete role')
-                                        <a href="{{ url('roles/'.$role->id.'/delete') }}" class="btn btn-danger mx-2">
+                                        <a href="{{ url('roles/'.$role->id.'/delete') }}" class="btn btn-danger mx-2" style="color:red;">
                                             Delete
                                         </a>
                                         @endcan

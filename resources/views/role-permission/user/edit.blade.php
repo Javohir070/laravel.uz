@@ -2,18 +2,11 @@
 @section("content")
 <div class="flex justify-between align-center mt-10">
 
-    <h2 class="intro-y text-lg font-medium">Users qo'shish </h2>
+    <h2 class="intro-y text-lg font-medium">Users edit </h2>
 
-    @role('super-admin')
         <a href="{{ url('users') }}" class="button w-24 bg-theme-1 text-white">
             Orqaga
         </a>
-    @endrole
-    @role('admin')
-        <a href="{{ url('/') }}" class="button w-24 bg-theme-1 text-white">
-            Orqaga
-        </a>
-    @endrole
 </div>
 
 
@@ -34,27 +27,12 @@
             @csrf
             @method('PUT')
             <div class="grid grid-cols-12 gap-2">
-                @role(['super-admin', 'admin'])
                     <div class="w-full col-span-6">
                         <label class="flex flex-col sm:flex-row"> <span
                         class="mt-1 mr-1 sm:mt-0 text-xs text-red-600">*</span>Name
                         </label>
                         <input type="text" name="name" value="{{ $user->name }}" class="input w-full border mt-2" >
                     </div>
-                @endrole
-                    @role('admin121')
-                    <div class="w-full col-span-6">
-                        <label class="flex flex-col sm:flex-row"> <span
-                                class="mt-1 mr-1 sm:mt-0 text-xs text-red-600">*</span> Xodimlar
-                        </label>
-                        <select name="name" class="input border w-full mt-2" required="">
-                            <option value=""> Xodimlar tanlash</option>
-                            @foreach ($xodimlar as $role)
-                                <option value="{{ $role->fish }}">{{ $role->fish }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @endrole
                     
                     <div class="w-full col-span-6">
                         <label class="flex flex-col sm:flex-row"> <span
@@ -78,24 +56,19 @@
                         <select name="roles[]" class="input border w-full mt-2" required="">
                             <option value=""> Role tanlash</option>
                             @foreach ($roles as $role)
-                              @if ($role !== 'super-admin' && $role !== 'admin' &&  $role !== 'Itm-tashkilotlar')
                               <option
                                         value="{{ $role }}"
                                         {{ in_array($role, $userRoles) ? 'selected':'' }}
                                     >
                                         {{ $role }}
                                     </option>
-                              @endif
                             @endforeach
                         </select>
                     </div>
-                    <!-- @role('admin')
-                        <input type="hidden" name="tashkilot_id" value="{{ auth()->user()->tashkilot->id }}">
-                    @endrole     -->
             </div><br>
         </form><br>
         <div class="px-5 pb-5 text-center">
-            <a href="#"  class="button delete-cancel w-32 border text-gray-700 mr-1">
+            <a href="{{ url('users') }}"  class="button delete-cancel w-32 border text-gray-700 mr-1">
                 Bekor qilish
             </a>
             <button type="submit" form="science-paper-create-form" class="update-confirm button w-24 bg-theme-1 text-white">
