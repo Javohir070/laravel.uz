@@ -27,14 +27,14 @@
                         </a>
                     </div>
                     <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
-                        <a href="#">
+                        <a href="{{ $url }}">
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
                                     <div class="flex">
                                         <i data-feather="file-text" class="report-box__icon text-theme-3"></i>
                                     </div>
                                     <div class="text-3xl font-bold leading-8 mt-6">501</div>
-                                    <div class="text-base text-gray-600 mt-1">Ilmiy loyhalar</div>
+                                    <div class="text-base text-gray-600 mt-1">Ilmiy loyhalar23121</div>
                                 </div>
                             </div>
                         </a>

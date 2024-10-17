@@ -12,6 +12,24 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
+
+    public function redirectToOneId()
+    {
+        $redirectUri = url('/login'); // Login sahifangizga qaytish linki
+        $client_id = 'grand_mininnovation_uz';
+        $scope = 'gis_xn_mobile';
+
+        // SSO tizimiga yo'naltirish uchun URL yaratish
+        $url = "https://sso.egov.uz/sso/oauth/Authorization.do?" . http_build_query([
+            'response_type' => 'one_code',
+            'client_id' => $client_id,
+            'redirect_uri' => $redirectUri,
+            'scope' => $scope,
+            'state' => 'testState',
+        ]);
+
+        return redirect($url);
+    }
     public function __construct()
     {
         $this->middleware('permission:view user', ['only' => ['index']]);

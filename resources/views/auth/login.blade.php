@@ -16,7 +16,7 @@
                     src="/admin/dist/images/illustration.svg">
                 <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                     Ilmiy-innovatsion faoliyat monitoringi tizimi
-
+                    
 
                 </div>
                 <!-- <div class="-intro-x mt-5 text-lg text-white">Barcha elektron tijorat hisoblaringizni bitta joydan boshqaring</div> -->

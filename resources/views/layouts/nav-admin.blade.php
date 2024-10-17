@@ -4,13 +4,6 @@
         <span class="hidden xl:block text-white text-lg ml-3" style="font-size: 12px; "> Ilmiy-innovatsion faoliyat monitoringi tizimi </span>
     </a>
     <div class="side-nav__devider my-6"></div>
-
-    @role(['admin','Xodimlar_uchun_masul','Tashkilot_pasporti_uchun_masul','Ilmiy_faoliyat_uchun_masul'])
-			<a href="/" class=" items-center ">
-				<img width="" style="text-align: center;margin: 10px auto;width: 70%;" alt=""  src="{{ asset('storage/'. auth()->user()->tashkilot->logo)  }}">
-				<span class="hidden xl:block text-white text-lg ml-3" style="font-size: 18px; text-align: center;"> {{ auth()->user()->tashkilot->name }}</span>
-			</a><br>
-    @endrole
     <ul>
         <li>
             <a href="{{ route("home.index") }}" class="side-menu side-menu{{ request()->is('/*') ? '--active':'' }}" >
@@ -19,7 +12,7 @@
             </a>
         </li>
     <!-- start superadmin -->
-    @role('super-admin')     
+    @role('super-admin12')     
         <li>
             <a href="javascript:;" class="side-menu side-menu{{ request()->is('iqtisodiylar*') ? '--active':'' }}{{ request()->is('tashkilotrahbarilar*') ? '--active':'' }}{{ request()->is('tashkilot*') ? '--active':'' }}">
                 <div class="side-menu__icon"> <i data-feather="file-text"></i> </div>
@@ -49,10 +42,28 @@
     @endrole
 
     @role('super-admin')
-        <li>
+        <!-- <li>
             <a href="#" class="side-menu side-menu{{ request()->is('xodim*') ? '--active':'' }}">
                 <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                 <div class="side-menu__title"> Xodimlar </div>
+            </a>
+        </li> -->
+        <li>
+            <a href="{{ route('news.index') }}" class="side-menu side-menu{{ request()->is('news*') ? '--active':'' }}">
+                <div class="side-menu__icon"> <i data-feather="file-text"></i> </div>
+                <div class="side-menu__title"> Yangliklar </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('annoucement.index') }}" class="side-menu side-menu{{ request()->is('annoucement*') ? '--active':'' }}">
+                <div class="side-menu__icon"> <i data-feather="file-text"></i> </div>
+                <div class="side-menu__title"> Tanlovlar </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('responsible.index') }}" class="side-menu side-menu{{ request()->is('responsible*') ? '--active':'' }}">
+                <div class="side-menu__icon"> <i data-feather="users"></i> </div>
+                <div class="side-menu__title"> Masullar</div>
             </a>
         </li>
     @endrole
